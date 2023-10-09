@@ -2,7 +2,7 @@
 *.terraform
 *.tfstate.backup
 *.tfstate
-*.hcl
+*.lock.hcl
 **/.vs
 **/bin
 **/obj
