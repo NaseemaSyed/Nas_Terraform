@@ -1,0 +1,11 @@
+*.user
+*.terraform
+*.tfstate.backup
+*.tfstate
+*.hcl
+**/.vs
+**/bin
+**/obj
+**/coverage.json
+**/Properties
+Packages
