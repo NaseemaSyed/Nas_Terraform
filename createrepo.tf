@@ -4,8 +4,14 @@ terraform {
       source  = "integrations/github"
       version = "4.17.0"
     }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.0"
+    }
   }
 }
+
+
 
 provider "github" {
    
@@ -20,3 +26,5 @@ resource "github_repository" "Terraform" {
 
   delete_branch_on_merge = true
 }
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
