@@ -59,3 +59,4 @@ admin_password = random_password.wordpress_admin_password.result
     }
   }
 }
+
