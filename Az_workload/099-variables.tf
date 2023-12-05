@@ -95,6 +95,13 @@ default = "virtual_network_subnets_003"
 }
 
 
+#--------Scalling
+variable "number_of_web_servers" {
+    type = number
+  description = "count of instances in web vmss"
+  default = 1
+}
+
 #----------storage vars---------------------
 variable "sa_account_tier" {
     description = "sa_account_tier"
