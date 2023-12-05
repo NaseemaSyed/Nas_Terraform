@@ -1,4 +1,4 @@
- generates the name of the Virtual Machine Scale Set.
+ #generates the name of the Virtual Machine Scale Set.
 resource "azurecaf_name" "web_vmss" {
 name = var.name
 resource_type = "web_vmss"
@@ -32,7 +32,7 @@ name                = azurecaf_name.web_vmss_.result
   resource_group_name = azurerm_resource_group.resource_group.name
   location = azurerm_resource_group.resource_group.location
 sku                = "Standard_F2"
-instances           = var.number_of_web_servers,
+instances           = var.number_of_web_servers
   admin_username      = "adminuser"
 admin_password = random_password.wordpress_admin_password.result
 
@@ -59,4 +59,3 @@ admin_password = random_password.wordpress_admin_password.result
     }
   }
 }
-
