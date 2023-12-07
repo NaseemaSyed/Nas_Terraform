@@ -1,0 +1,12 @@
+
+
+#cloud-config
+package_update: true #Updates all installed packages
+package_upgrade: true
+packages:
+- nfs-common
+runcmd:
+- sudo mount -t nfs ${tmpl_file_share} /var/www/html -o
+vers=4,minorversion=1,sec=sys
+- echo "${tmpl_file_share} /var/www/html nfs
+vers=4,minorversion=1,sec=sys" | sudo tee --append /etc/fstab
