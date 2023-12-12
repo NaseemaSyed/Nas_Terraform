@@ -28,10 +28,8 @@ resource "azurerm_storage_account_network_rules" "sa" {
   default_action     = var.sa_network_default_action
   ip_rules           = setunion(var.network_trusted_ips, ["${jsondecode(data.http.current_ip.response_body).ip}"])
   bypass             = var.sa_network_bypass
-  virtual_network_subnet_ids = [
-    for subnet_id in azurerm_subnet.vnet_subnets :
-    subnet_id.id
-  ]
+  virtual_network_subnet_ids =  [azurerm_subnet.vnet_subnets[var.subnet_for_database].id]
+  
 }
 
 resource "azurerm_storage_share" "nfs_share" {

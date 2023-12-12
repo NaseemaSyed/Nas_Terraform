@@ -105,7 +105,7 @@ variable "number_of_web_servers" {
 #----------storage vars---------------------
 variable "sa_account_tier" {
   description = "sa_account_tier"
-  default     = "standard"
+  default     = "Standard"
 
 }
 variable "sa_account_replication_type" {
@@ -120,7 +120,8 @@ variable "sa_network_default_action" {
 }
 variable "sa_network_bypass" {
   description = "Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of Logging, Metrics, AzureServices, or None."
-  default     = "Logging"
+  
+  default     = ["Logging"]
 
 }
 variable "nfs_share_quota" {

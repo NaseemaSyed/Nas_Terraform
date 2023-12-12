@@ -18,7 +18,7 @@ resource "random_password" "wordpress_admin_password" {
 
 resource "random_password" "vm_admin_password" {
   length  = 9
-  special = false
+  special = true
 }
 
 
@@ -30,10 +30,7 @@ resource "azurerm_network_interface" "admin_vm_nic" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     =  [
-    for subnet_id in azurerm_subnet.vnet_subnets :
-    subnet_id.id
-  ]
+    subnet_id                     =   azurerm_subnet.vnet_subnets["${var.subnet_for_vms}"].id
     private_ip_address_allocation = "Dynamic"
   }
 

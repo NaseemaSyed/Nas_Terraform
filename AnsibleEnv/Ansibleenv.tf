@@ -28,7 +28,7 @@ resource "azurerm_network_security_group" "nas" {
   resource_group_name = azurerm_resource_group.nas.name
 
   security_rule {
-    name                       = "TCP"
+    name                       = "Tcp"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
@@ -39,11 +39,11 @@ resource "azurerm_network_security_group" "nas" {
     destination_address_prefix = "*"
   }
   security_rule {
-    name                       = "RDP"
+    name                       = "Rdp-In"
     priority                   = 1000
     direction                  = "Inbound"
     access                     = "Allow"
-    protocol                   = "RDP"
+    protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "3389"
     source_address_prefix      = "*"
@@ -143,7 +143,7 @@ resource "azurerm_windows_virtual_machine" "nas" {
   location            = azurerm_resource_group.nas.location
   size                = "Standard_B2s"
   admin_username      = var.admin_username
-  admin_password      = random_password.random_pass
+  admin_password      = random_password.random_pass.result
   network_interface_ids = [
     azurerm_network_interface.nas2.id,
   ]

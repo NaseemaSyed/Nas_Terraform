@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "web_vmss_nic" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     =  azurerm_subnet.vnet_subnets[0].id
+    subnet_id                     =   azurerm_subnet.vnet_subnets["${var.subnet_for_vms}"].id
     private_ip_address_allocation = "Dynamic"
   }
 
@@ -55,10 +55,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "web" {
     ip_configuration {
       name      = "internal"
       primary   = true
-      subnet_id =  [
-    for subnet_id in azurerm_subnet.vnet_subnets :
-    subnet_id.id
-  ]
+      subnet_id =  azurerm_subnet.vnet_subnets["${var.subnet_for_vms}"].id
+  
     }
   }
 }
